@@ -23,6 +23,8 @@
     "@nestjs/core": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
     "@nrwl/angular": "12.10.0",
+    "cache-manager": "^3.4.4",
+    "cache-manager-redis-store": "^2.0.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
