@@ -1,0 +1,44 @@
+{
+  "npmScope": "angular-nestjs-redis-e-shop",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "projects": {
+    "angular-nestjs-redis-e-shop": {
+      "tags": []
+    },
+    "angular-nestjs-redis-e-shop-e2e": {
+      "tags": [],
+      "implicitDependencies": ["angular-nestjs-redis-e-shop"]
+    },
+    "api": {
+      "tags": []
+    },
+    "api-interfaces": {
+      "tags": []
+    }
+  }
+}
