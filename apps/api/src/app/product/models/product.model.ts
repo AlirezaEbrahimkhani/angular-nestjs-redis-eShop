@@ -1,7 +1,6 @@
 import { ProductCategoryType } from '../types';
 
 export interface ProductInterface {
-  id: string;
   title: string;
   quantity: number;
   price: number;
