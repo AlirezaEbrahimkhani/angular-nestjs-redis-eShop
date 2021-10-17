@@ -1,6 +1,6 @@
 import { ProductCategoryType } from '../types';
 
-export interface ProductInterface {
+export interface InsertProductDTO {
   title: string;
   quantity: number;
   price: number;
