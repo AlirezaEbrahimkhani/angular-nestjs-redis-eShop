@@ -1,12 +1,9 @@
-import { HttpVerb, RequestHandler } from '../types';
+import { HttpVerb } from '../types';
 import { catchError } from 'rxjs/operators';
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpHeaders,
-} from '@angular/common/http';
+import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { environment } from 'apps/angular-nestjs-redis-e-shop/src/environments/environment';
-import { throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
+import { GlobalService } from './global.service';
 
 export function ApiRequest(verb: HttpVerb = 'GET'): RequstBuilderService {
   return new RequstBuilderService(verb);
@@ -17,7 +14,7 @@ export class RequstBuilderService {
   private _action: string = '';
   private _body: Object = {};
 
-  constructor(private verb: HttpVerb = 'GET', private http?: HttpClient) {}
+  constructor(private verb: HttpVerb = 'GET') {}
 
   public Controller(controllerName: string) {
     this._controller = controllerName;
@@ -34,51 +31,44 @@ export class RequstBuilderService {
     return this;
   }
 
-  public call() {
+  public call(gs: GlobalService): Observable<any> {
     const url = `${environment.servicBaseUrl}${this._controller}/${this._action}`;
-    const hdrs = new HttpHeaders({
+    const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-    return this.requestHandler[this.verb](url, hdrs, this._body);
+    if (this.verb === 'GET') {
+      return gs.http.get(url, { headers }).pipe(
+        catchError((err) => {
+          return this.ErrorHandeling(err);
+        })
+      );
+    } else if (this.verb === 'POST') {
+      return gs.http.post(url, this._body, { headers }).pipe(
+        catchError((err) => {
+          return this.ErrorHandeling(err);
+        })
+      );
+    } else if (this.verb === 'PUT') {
+      return gs.http.put(url, this._body, { headers }).pipe(
+        catchError((err) => {
+          return this.ErrorHandeling(err);
+        })
+      );
+    } else if (this.verb === 'DELETE') {
+      return gs.http.delete(url, { headers }).pipe(
+        catchError((err) => {
+          return this.ErrorHandeling(err);
+        })
+      );
+    } else if (this.verb === 'PATCH') {
+      return gs.http.patch(url, { headers }).pipe(
+        catchError((err) => {
+          return this.ErrorHandeling(err);
+        })
+      );
+    }
+    return of();
   }
-
-  requestHandler: RequestHandler = {
-    GET: (url: string, headers: HttpHeaders) => {
-      return this.http?.get(url, { headers }).pipe(
-        catchError((err) => {
-          return this.ErrorHandeling(err);
-        })
-      );
-    },
-    DELETE: () => (url: string, headers: HttpHeaders) => {
-      return this.http?.delete(url, { headers }).pipe(
-        catchError((err) => {
-          return this.ErrorHandeling(err);
-        })
-      );
-    },
-    PATCH: () => (url: string, headers: HttpHeaders) => {
-      return this.http?.patch(url, { headers }).pipe(
-        catchError((err) => {
-          return this.ErrorHandeling(err);
-        })
-      );
-    },
-    POST: () => (url: string, headers: HttpHeaders, body: Object) => {
-      return this.http?.post(url, body, { headers }).pipe(
-        catchError((err) => {
-          return this.ErrorHandeling(err);
-        })
-      );
-    },
-    PUT: () => (url: string, headers: HttpHeaders, body: Object) => {
-      return this.http?.put(url, body, { headers }).pipe(
-        catchError((err) => {
-          return this.ErrorHandeling(err);
-        })
-      );
-    },
-  };
 
   ErrorHandeling(error: HttpErrorResponse) {
     const { message, status } = error;
