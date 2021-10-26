@@ -21,7 +21,7 @@
               "apps/angular-nestjs-redis-e-shop/src/favicon.ico",
               "apps/angular-nestjs-redis-e-shop/src/assets"
             ],
-            "styles": ["apps/angular-nestjs-redis-e-shop/src/styles.scss"],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/indigo-pink.css", "apps/angular-nestjs-redis-e-shop/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
