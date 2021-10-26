@@ -1,0 +1,32 @@
+.card-wrapper {
+  max-width: 280px;
+  margin: 15px 0;
+  max-height: 550px;
+  overflow-y: auto;
+
+  .mat-card-header .mat-card-title {
+    font-size: 16px;
+  }
+
+  mat-card-content {
+    height: 100px;
+    overflow-y: scroll;
+
+    .prop-title {
+      font-weight: 500;
+    }
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .has-stock {
+      color: #18b216;
+    }
+    .not-stock {
+      color: red;
+    }
+  }
+}

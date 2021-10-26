@@ -70,7 +70,7 @@ export class RequstBuilderService {
     return of();
   }
 
-  ErrorHandeling(error: HttpErrorResponse) {
+  private ErrorHandeling(error: HttpErrorResponse) {
     const { message, status } = error;
     console.log(`Status Code : ${status} , Message : ${message}`);
     return throwError(error);

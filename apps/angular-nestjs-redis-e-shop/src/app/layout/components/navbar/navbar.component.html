@@ -1,0 +1,18 @@
+<div class="navbar">
+  <div class="navbar-items">
+    <span>Home</span>
+    <span>Products</span>
+  </div>
+  <div class="user-info">
+    <span>Cart</span>
+    <span *ngIf="userService.loggedIn | async; else notLoggedIn">{{
+      (userService.currentUser | async)?.username
+    }}</span>
+    <ng-template #notLoggedIn>
+      <span>Login / Register</span>
+    </ng-template>
+  </div>
+</div>
+<div class="router">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,21 @@
+<mat-card class="card-wrapper">
+  <mat-card-header>
+    <mat-card-title>{{ product.title }}</mat-card-title>
+    <mat-card-subtitle>{{ product.type }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [imageSource]="product.imageSource" alt="" />
+  <mat-card-content>
+    <span><span class="prop-title">Price: </span> {{ product.price }}$</span>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-flat-button color="accent">
+      Add to cart <mat-icon>add_shopping_cart</mat-icon>
+    </button>
+    <span class="has-stock" *ngIf="product.quantity != 0; else noStock"
+      >{{ product.quantity }} in stock</span
+    >
+    <ng-template #noStock>
+      <span class="not-stock">Not available</span>
+    </ng-template>
+  </mat-card-actions>
+</mat-card>

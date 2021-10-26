@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  servicBaseUrl : "http://localhost:3333/api/"
+  servicBaseUrl: 'http://localhost:3333/api/',
+  imageBaseUrl: 'http://localhost:3333/api/',
 };
 
 /*
