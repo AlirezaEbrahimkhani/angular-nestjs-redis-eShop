@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { RedisCacheService } from '../../core/services';
 import { Customer } from '../../customer/models';
 import { DataResponese, ListName } from '../../shared';
-import { RegisterCustomerDTO } from '../dtos';
+import { LoginCustomerDto, RegisterCustomerDTO } from '../dtos';
 
 @Injectable()
 export class AuthService {
@@ -31,7 +31,7 @@ export class AuthService {
   }
 
   private _checkUsernameExistence(allCustomers: Object, username: string) {
-    return Object.keys(allCustomers).includes(username);
+    return allCustomers ? Object.keys(allCustomers).includes(username) : false;
   }
 
   private async _fetchAllCustomers(): Promise<Object> {
@@ -39,5 +39,25 @@ export class AuthService {
       ListName.CUSTOMERs
     );
     return customers;
+  }
+
+  async loginCustomer(loginCustomerDto: LoginCustomerDto): Promise<Object> {
+    const user = await this.validateUserPassword(loginCustomerDto);
+    if (!user)
+      throw new UnauthorizedException('incorrect username or password !');
+    return new DataResponese(
+      { username: loginCustomerDto.username },
+      true,
+      'Login Successfully !'
+    );
+  }
+
+  async validateUserPassword(loginCustomerDto: LoginCustomerDto): Promise<any> {
+    let allCustomers: Object = await this._fetchAllCustomers();
+    const { username, password } = loginCustomerDto;
+    let usernameExits = this._checkUsernameExistence(allCustomers, username);
+    if (usernameExits) {
+      return allCustomers[username].password === password;
+    } else false;
   }
 }
