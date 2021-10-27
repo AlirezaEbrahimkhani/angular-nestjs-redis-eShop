@@ -42,22 +42,29 @@ export class AuthService {
   }
 
   async loginCustomer(loginCustomerDto: LoginCustomerDto): Promise<Object> {
-    const user = await this.validateUserPassword(loginCustomerDto);
+    const user = await this._validateUserPassword(loginCustomerDto);
     if (!user)
       throw new UnauthorizedException('incorrect username or password !');
     return new DataResponese(
-      { username: loginCustomerDto.username },
+      {
+        username: loginCustomerDto.username,
+        products_in_cart: user.products_in_cart,
+      },
       true,
       'Login Successfully !'
     );
   }
 
-  async validateUserPassword(loginCustomerDto: LoginCustomerDto): Promise<any> {
+  async _validateUserPassword(
+    loginCustomerDto: LoginCustomerDto
+  ): Promise<any> {
     let allCustomers: Object = await this._fetchAllCustomers();
     const { username, password } = loginCustomerDto;
     let usernameExits = this._checkUsernameExistence(allCustomers, username);
     if (usernameExits) {
-      return allCustomers[username].password === password;
+      return allCustomers[username].password === password
+        ? { products_in_cart: allCustomers[username].products_in_cart }
+        : false;
     } else false;
   }
 }
