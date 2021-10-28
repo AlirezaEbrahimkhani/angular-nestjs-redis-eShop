@@ -5,11 +5,11 @@
   </div>
   <div class="user-info">
     <span>Cart</span>
-    <span *ngIf="userService.loggedIn | async; else notLoggedIn">{{
-      (userService.currentUser | async)?.username
+    <span *ngIf="userService.getLoggedIn | async; else notLoggedIn">{{
+      (userService.getUser | async)?.username
     }}</span>
     <ng-template #notLoggedIn>
-      <span>Login / Register</span>
+      <span routerLink="/auth/authorization">Login / Register</span>
     </ng-template>
   </div>
 </div>
