@@ -26,19 +26,17 @@ export class ProductService {
     return new DataResponese<Object>(products);
   }
 
-  async insertNewProduct(insertProductDTO: InsertProductDTO): Promise<void> {
+  async insertNewProduct(insertProductDTO: InsertProductDTO) {
     let uuid = uuidv4();
     let allProduct: Object = await this._fetchAllProducts();
     allProduct = { ...allProduct, [uuid]: insertProductDTO };
     await this._insertNewProdcutToItsCategory(insertProductDTO, uuid);
-    this.redisCacheService
-      .set(ListName.PRODUCTS, allProduct)
-      .then(() => {
-        return new DataResponese([], true);
-      })
-      .catch((err) => {
-        if (err) return new DataResponese([], false);
-      });
+    let response: any = await this.redisCacheService.set(
+      ListName.PRODUCTS,
+      allProduct
+    );
+    if (response === 'OK') return new DataResponese([], true);
+    else return new DataResponese([], false);
   }
 
   private async _insertNewProdcutToItsCategory(

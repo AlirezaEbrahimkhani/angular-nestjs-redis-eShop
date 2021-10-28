@@ -9,7 +9,7 @@ export class RedisCacheService {
   }
 
   async set<T>(key: string, value: T): Promise<void> {
-    await this.cache.set(key, value, 1000);
+    return this.cache.set(key, value, 1000);
   }
 
   async reset(): Promise<void> {
