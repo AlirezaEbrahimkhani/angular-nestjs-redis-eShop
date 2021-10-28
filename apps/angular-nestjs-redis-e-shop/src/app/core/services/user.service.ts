@@ -10,15 +10,15 @@ export class UserService {
   private _currentUser$ = new BehaviorSubject<Partial<User>>({});
   constructor() {}
 
-  public get loggedIn(): Observable<boolean> {
+  public get getLoggedIn(): Observable<boolean> {
     return this._isLoggedIn$.asObservable();
   }
 
-  public set loggedInUser(status: boolean) {
+  public set setLoggedIn(status: boolean) {
     this._isLoggedIn$.next(status);
   }
 
-  public get currentUser(): Observable<Partial<User>> {
+  public get getUser(): Observable<Partial<User>> {
     return this._currentUser$.asObservable();
   }
 

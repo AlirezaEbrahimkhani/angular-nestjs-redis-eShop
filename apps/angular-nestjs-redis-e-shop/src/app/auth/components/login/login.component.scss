@@ -1,0 +1,35 @@
+.container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+
+  .main-box {
+    width: 40%;
+    min-width: 20rem;
+    border-radius: 8px;
+    height: 60vh;
+    place-self: center;
+    place-content: center;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    box-sizing: border-box;
+    gap: 2.5vh;
+
+    .login-box {
+      display: grid;
+      align-content: space-around;
+      place-self: center;
+      place-content: center;
+      margin-top: 18vh;
+
+      .mat-raised-button {
+        font-size: 1.05rem;
+        min-height: 5vh;
+      }
+
+      .mat-button {
+        margin-top: 1vh;
+      }
+    }
+  }
+}
