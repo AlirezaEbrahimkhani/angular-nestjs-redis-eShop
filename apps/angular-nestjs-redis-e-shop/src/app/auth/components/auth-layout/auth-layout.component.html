@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="main-box">
+    <mat-tab-group header-less-tabs [selectedIndex]="selectedIndex">
+      <mat-tab>
+        <app-login (changeTab)="selectedIndex = $event"></app-login>
+      </mat-tab>
+      <mat-tab>
+        <app-register (changeTab)="selectedIndex = $event"></app-register>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

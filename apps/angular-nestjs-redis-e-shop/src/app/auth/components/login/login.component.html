@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="main-box">
+    <form [formGroup]="form" class="login-box" (ngSubmit)="onLogin()">
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input formControlName="username" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput type="password" />
+      </mat-form-field>
+      <button mat-raised-button color="primary">login</button>
+      <button mat-button (click)="changeTab.emit(1)">Register</button>
+    </form>
+  </div>
+</div>

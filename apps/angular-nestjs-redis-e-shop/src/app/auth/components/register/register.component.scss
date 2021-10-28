@@ -1,0 +1,24 @@
+.main-box {
+  width: 50vw;
+
+  mat-form-field {
+    width: 49%;
+    margin-right: 5px;
+  }
+
+  .mat-raised-button {
+    font-size: 1.05rem;
+    min-height: 5vh;
+    margin-right: 5px;
+  }
+
+  .mat-button {
+    font-size: 1.05rem;
+    min-height: 5vh;
+  }
+
+  .button-section {
+    display: flex;
+    justify-content: center;
+  }
+}
