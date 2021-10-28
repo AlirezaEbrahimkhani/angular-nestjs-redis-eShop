@@ -9,7 +9,7 @@ export class CustomerService {
 
   async getAllCustomer() {
     let customers: Object = await this.redisCacheService.get<[Customer]>(
-      ListName.CUSTOMERs
+      ListName.CUSTOMERS
     );
 
     return new DataResponese<Customer>(customers);

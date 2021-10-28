@@ -5,6 +5,6 @@ export interface RegisterCustomerDTO {
     last_name: string;
     email: string;
     phone_number: string;
-    img_urls: string[];
+    img_urls?: string[];
   }
   

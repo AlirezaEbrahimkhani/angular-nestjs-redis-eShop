@@ -21,7 +21,7 @@ export class AuthService {
       [registerCustomerDTO.username]: new Customer(registerCustomerDTO),
     };
     this.redisCacheService
-      .set(ListName.CUSTOMERs, allCustomers)
+      .set(ListName.CUSTOMERS, allCustomers)
       .then(() => {
         return new DataResponese([], true);
       })
@@ -36,7 +36,7 @@ export class AuthService {
 
   private async _fetchAllCustomers(): Promise<Object> {
     let customers: Object = await this.redisCacheService.get(
-      ListName.CUSTOMERs
+      ListName.CUSTOMERS
     );
     return customers;
   }

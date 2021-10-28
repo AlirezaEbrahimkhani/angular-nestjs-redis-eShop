@@ -10,7 +10,6 @@ export class Customer {
   phone_number: string;
   img_urls: string[];
   products_in_cart: string;
-  cart_status: CartStatus;
   constructor(registerCustomerDTO) {
     this.username = registerCustomerDTO.username ?? '';
     this.password = registerCustomerDTO.password ?? '';
@@ -20,9 +19,5 @@ export class Customer {
     this.phone_number = registerCustomerDTO.phone_number ?? '';
     this.img_urls = registerCustomerDTO.img_urls ?? [];
     this.products_in_cart = registerCustomerDTO.products_in_cart ?? uuidv4();
-    this.cart_status = registerCustomerDTO.cart_status ?? {
-      status: 'Done',
-      payable_amount: '0$',
-    };
   }
 }
