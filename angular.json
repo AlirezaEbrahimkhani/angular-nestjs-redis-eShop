@@ -5,7 +5,7 @@
       "projectType": "application",
       "root": "apps/angular-nestjs-redis-e-shop",
       "sourceRoot": "apps/angular-nestjs-redis-e-shop/src",
-      "prefix": "angular-nestjs-redis-e-shop",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
