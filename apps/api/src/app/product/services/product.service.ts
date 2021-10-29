@@ -64,6 +64,8 @@ export class ProductService {
           else response = await this.redisCacheService.get(ListName.TOP_DOWN);
           break;
       }
+    } else {
+      response = await this._fetchAllProducts();
     }
     return new DataResponese(response);
   }
