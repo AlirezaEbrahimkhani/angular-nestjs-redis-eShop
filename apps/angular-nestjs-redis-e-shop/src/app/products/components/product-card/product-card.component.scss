@@ -11,9 +11,11 @@
   mat-card-content {
     height: 100px;
     overflow-y: scroll;
-
-    .prop-title {
-      font-weight: 500;
+    .line-height {
+      line-height: 1.7;
+      .prop-title {
+        font-weight: 500;
+      }
     }
   }
 

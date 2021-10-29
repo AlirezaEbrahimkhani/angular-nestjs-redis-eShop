@@ -5,7 +5,13 @@
   </mat-card-header>
   <img mat-card-image [imageSource]="product.imageSource" alt="" />
   <mat-card-content>
-    <span><span class="prop-title">Price: </span> {{ product.price }}$</span>
+    <span class="line-height"
+      ><span class="prop-title">Price: </span> {{ product.price }}$</span
+    >
+    <br />
+    <app-information-renderer
+      [information]="product.external_information"
+    ></app-information-renderer>
   </mat-card-content>
   <mat-card-actions>
     <button mat-flat-button color="accent">
