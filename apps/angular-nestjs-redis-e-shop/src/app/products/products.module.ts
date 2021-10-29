@@ -9,6 +9,7 @@ import { ProductsRoutingModule } from './products.routing';
 import { ProductsRoutingComponent } from './prodcuts.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { SharedModule } from '../shared/shared.module';
+import { InformationRendererComponent } from './components/information-renderer/information-renderer.component';
 
 const Material_Modules: any[] = [MatCardModule, MatButtonModule, MatIconModule];
 
@@ -17,6 +18,7 @@ const Material_Modules: any[] = [MatCardModule, MatButtonModule, MatIconModule];
     ProductsRoutingComponent,
     ProductListComponent,
     ProductCardComponent,
+    InformationRendererComponent,
   ],
   imports: [
     CommonModule,
