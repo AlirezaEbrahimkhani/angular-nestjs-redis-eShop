@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
 
 const ROUTES: Routes = [
   {
@@ -31,6 +32,6 @@ const ROUTES: Routes = [
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(ROUTES)],
   exports: [RouterModule],
-  declarations: [NavbarComponent],
+  declarations: [NavbarComponent, HomeComponent],
 })
 export class LayoutModule {}
