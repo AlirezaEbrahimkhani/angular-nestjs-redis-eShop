@@ -1,1 +1,17 @@
-<p>cart-product-card works!</p>
+<mat-card>
+  <div class="prodcut-info-wrapper">
+    <div class="image">
+      <img [imageSource]="product.img_src" alt="" />
+    </div>
+    <div class="information">
+      <app-information-renderer
+        [information]="product.external_information"
+      ></app-information-renderer>
+    </div>
+    <div class="price">
+      <span class="line-height"
+        ><span class="prop-title">Price: </span> {{ product.price }}$</span
+      >
+    </div>
+  </div>
+</mat-card>

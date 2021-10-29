@@ -1,1 +1,11 @@
-<p>cart-main works!</p>
+<div class="wrapper">
+  <h3>Product List</h3>
+  <app-cart-product-card
+    *ngFor="let item of cartProdcuts"
+    [product]="item"
+    class="w-80"
+  ></app-cart-product-card>
+  <div class="footer-wrapper">
+    <app-cart-footer [cartInformation]="cartInformation"></app-cart-footer>
+  </div>
+</div>

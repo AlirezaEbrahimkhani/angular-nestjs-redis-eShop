@@ -1,1 +1,10 @@
-<p>cart-footer works!</p>
+<div class="wrapper">
+  <div class="pay-button">
+    <button mat-raised-button color="accent" (click)="payCart()">
+      Pay <mat-icon>payment</mat-icon>
+    </button>
+  </div>
+  <div class="pay-amount">
+    <span>Payable amount: {{ cartInformation.payable_amount }}$</span>
+  </div>
+</div>
