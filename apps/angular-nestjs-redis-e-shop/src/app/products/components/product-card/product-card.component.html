@@ -14,7 +14,7 @@
     ></app-information-renderer>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-flat-button color="accent">
+    <button mat-flat-button color="accent" [disabled]="product.quantity === 0">
       Add to cart <mat-icon>add_shopping_cart</mat-icon>
     </button>
     <span class="has-stock" *ngIf="product.quantity != 0; else noStock"

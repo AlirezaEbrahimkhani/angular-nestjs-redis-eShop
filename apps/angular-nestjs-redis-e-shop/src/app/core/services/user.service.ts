@@ -15,6 +15,7 @@ export class UserService {
   }
 
   public set setLoggedIn(status: boolean) {
+    localStorage.setItem('Token', 'true');
     this._isLoggedIn$.next(status);
   }
 
@@ -23,6 +24,7 @@ export class UserService {
   }
 
   public set setUser(user: User) {
+    localStorage.setItem('User', JSON.stringify(user));
     this._currentUser$.next(user);
   }
 }
