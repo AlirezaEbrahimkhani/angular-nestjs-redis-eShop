@@ -38,7 +38,7 @@ export class LoginComponent {
           });
           this.userService.setLoggedIn = true;
           this.userService.setUser = Data;
-          this.router.navigate(['/']);
+          this.router.navigate(['/home']);
         } else
           this.snackBar.open('Username/Password is wrong ... !', 'x', {
             duration: 1500,

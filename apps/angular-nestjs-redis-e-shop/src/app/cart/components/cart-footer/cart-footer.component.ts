@@ -28,7 +28,7 @@ export class CartFooterComponent {
           this._snakBar.open('Cart paied successfully ... !', 'X', {
             duration: 2000,
           });
-          this.router.navigate(['/']);
+          this.router.navigate(['/home']);
         } else
           this._snakBar.open('Something went wrong ... !', 'X', {
             duration: 2000,
