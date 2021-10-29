@@ -9,16 +9,22 @@ import { ProductsRoutingModule } from './products.routing';
 import { ProductsRoutingComponent } from './prodcuts.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { SharedModule } from '../shared/shared.module';
-import { InformationRendererComponent } from './components/information-renderer/information-renderer.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ProductFilterComponent } from './components/product-filter/product-filter.component';
 
-const Material_Modules: any[] = [MatCardModule, MatButtonModule, MatIconModule];
+const Material_Modules: any[] = [
+  MatCardModule,
+  MatButtonModule,
+  MatIconModule,
+  MatSnackBarModule,
+];
 
 @NgModule({
   declarations: [
     ProductsRoutingComponent,
     ProductListComponent,
     ProductCardComponent,
-    InformationRendererComponent,
+    ProductFilterComponent,
   ],
   imports: [
     CommonModule,
