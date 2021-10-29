@@ -4,7 +4,7 @@
     <span routerLink="/products/product-list">Products</span>
   </div>
   <div class="user-info">
-    <span>Cart</span>
+    <span routerLink="/cart/main">Cart</span>
     <span *ngIf="userService.getLoggedIn | async; else notLoggedIn">{{
       (userService.getUser | async)?.username
     }}</span>
