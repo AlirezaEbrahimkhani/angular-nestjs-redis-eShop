@@ -9,8 +9,10 @@
         <mat-label>Password</mat-label>
         <input formControlName="password" matInput type="password" />
       </mat-form-field>
-      <button mat-raised-button color="primary">login</button>
-      <button mat-button (click)="changeTab.emit(1)">Register</button>
+      <button mat-raised-button type="submit" color="primary">login</button>
+      <button mat-button type="button" (click)="changeTab.emit(1)">
+        Register
+      </button>
     </form>
   </div>
 </div>

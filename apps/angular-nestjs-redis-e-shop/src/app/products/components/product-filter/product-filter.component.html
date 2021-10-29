@@ -1,0 +1,38 @@
+<div class="filter-wrapper">
+  <mat-card>
+    <form [formGroup]="form" class="form-wrapper">
+      <p>Search By:</p>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input
+          #nameInput
+          matInput
+          placeholder="Search by name"
+          formControlName="productName"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Category</mat-label>
+        <mat-select
+          formControlName="category"
+          (selectionChange)="formChanged.emit(form.value)"
+        >
+          <mat-option [value]="null"> -- None -- </mat-option>
+          <mat-option [value]="'Digital'"> Digital </mat-option>
+          <mat-option [value]="'Clothing'"> Clothing </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Sort order</mat-label>
+        <mat-select
+          formControlName="sortOrder"
+          (selectionChange)="formChanged.emit(form.value)"
+        >
+          <mat-option [value]="null"> -- None -- </mat-option>
+          <mat-option [value]="1"> Bottom to Up </mat-option>
+          <mat-option [value]="2"> Top to Bottom </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </mat-card>
+</div>

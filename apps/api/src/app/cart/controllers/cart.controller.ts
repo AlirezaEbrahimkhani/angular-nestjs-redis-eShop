@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { DataResponese } from '../../shared';
 import { CartDTO } from '../dtos';
 import { CartService } from '../services';
@@ -7,8 +7,8 @@ import { CartService } from '../services';
 export class CartController {
   constructor(private readonly cartService: CartService) {}
 
-  @Get()
-  getCart(@Body() cart_uuid: string): Promise<DataResponese<Object>> {
+  @Get('/:cart_uuid')
+  getCart(@Param() cart_uuid: string): Promise<DataResponese<Object>> {
     let data = this.cartService.getCart(cart_uuid);
     return data;
   }
@@ -16,5 +16,10 @@ export class CartController {
   addProductToCart(@Body() cartDTO: CartDTO) {
     let addResponse = this.cartService.addProductToCart(cartDTO);
     return addResponse;
+  }
+
+  @Post('/pay/:cart_uuid')
+  async cartPayment(@Param() cart_uuid: any) {
+    return await this.cartService.cartPayment(cart_uuid);
   }
 }

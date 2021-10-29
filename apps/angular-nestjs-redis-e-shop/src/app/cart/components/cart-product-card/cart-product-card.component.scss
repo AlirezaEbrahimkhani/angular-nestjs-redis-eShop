@@ -1,0 +1,31 @@
+mat-card {
+  padding: 30px;
+  margin: 15px 0;
+  .prodcut-info-wrapper {
+    display: grid;
+    grid-template-columns: 35% 45% 20%;
+    grid-gap: 1rem;
+
+    .image {
+      img {
+        width: 160px;
+        height: auto;
+      }
+    }
+
+    .information {
+      align-self: center;
+      text-align: left;
+    }
+
+    .price {
+      align-self: center;
+      .line-height {
+        line-height: 1.7;
+        .prop-title {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

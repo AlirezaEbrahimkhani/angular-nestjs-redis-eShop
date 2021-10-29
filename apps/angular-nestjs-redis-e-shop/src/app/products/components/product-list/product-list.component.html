@@ -1,7 +1,11 @@
 <div class="products-wrapper">
+  <div class="filter-section">
+    <app-product-filter (formChanged)="onFormChanged($event)"></app-product-filter>
+  </div>
+  <div class="prodcut-list">
     <angular-nestjs-redis-e-shop-product-card
-  *ngFor="let item of productList | keyvalue"
-  [product]="item.value"
-></angular-nestjs-redis-e-shop-product-card>
-
+      *ngFor="let item of productList | keyvalue"
+      [product]="item.value"
+    ></angular-nestjs-redis-e-shop-product-card>
+  </div>
 </div>

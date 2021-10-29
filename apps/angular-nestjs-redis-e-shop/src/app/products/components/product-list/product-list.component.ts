@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiResponse } from '../../../shared';
+import { Filter } from '../../shared/interfaces/filter.interfaces';
 import { ProductsService } from '../../shared/services/products.service';
 
 @Component({
@@ -20,5 +21,13 @@ export class ProductListComponent implements OnInit {
     this.productService.getAllProducts().subscribe((resp: ApiResponse<any>) => {
       this.productList = resp.Data;
     });
+  }
+
+  onFormChanged($event: Filter) {
+    this.productService
+      .searchProduct($event)
+      .subscribe((resp: ApiResponse<any>) => {
+        this.productList = resp.Data;
+      });
   }
 }

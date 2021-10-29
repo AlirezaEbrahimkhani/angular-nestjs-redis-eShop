@@ -20,14 +20,12 @@ export class AuthService {
       ...allCustomers,
       [registerCustomerDTO.username]: new Customer(registerCustomerDTO),
     };
-    this.redisCacheService
-      .set(ListName.CUSTOMERS, allCustomers)
-      .then(() => {
-        return new DataResponese([], true);
-      })
-      .catch((err) => {
-        if (err) return new DataResponese([], false);
-      });
+    let response: any = await this.redisCacheService.set(
+      ListName.CUSTOMERS,
+      allCustomers
+    );
+    if (response === 'OK') return new DataResponese();
+    else return new DataResponese([], false);
   }
 
   private _checkUsernameExistence(allCustomers: Object, username: string) {

@@ -1,7 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { DataResponese } from '../../shared';
-import { InsertProductDTO } from '../dtos';
-import { ProductInterface } from '../models';
+import { FilterSearchDTO, InsertProductDTO } from '../dtos';
 import { ProductService } from '../services';
 import { ProductCategoryType } from '../types';
 
@@ -27,5 +26,11 @@ export class ProductController {
   insertNewProduct(@Body() insertProductDTO: InsertProductDTO) {
     let insertResponse = this.productService.insertNewProduct(insertProductDTO);
     return insertResponse;
+  }
+
+  @Post('/filter')
+  async filterProduct(@Body() filterProductDTO: FilterSearchDTO) {
+    let filterResponse = await this.productService.filterProdcut(filterProductDTO)
+    return filterResponse
   }
 }

@@ -1,0 +1,6 @@
+<ng-container *ngFor="let item of information | keyvalue">
+  <span class="line-height"
+    ><span class="prop-title">{{ item.key }}: </span> {{ item.value }}</span
+  >
+  <br />
+</ng-container>
